@@ -12,6 +12,11 @@ const like_routes_1 = __importDefault(require("./routes/like.routes"));
 const comment_routes_1 = __importDefault(require("./routes/comment.routes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.get("/", (req, res) => {
+    res.json({
+        message: "Welcome to Express DevOps API",
+    });
+});
 app.use("/api/auth", auth_routes_1.default);
 app.use("/api/user", user_routes_1.default);
 app.use("/api/admin", admin_routes_1.default);

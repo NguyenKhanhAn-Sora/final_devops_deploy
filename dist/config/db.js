@@ -17,7 +17,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield mongoose_1.default.connect(process.env.MONGO_ATLAS_URI);
+    yield mongoose_1.default.connect("mongodb+srv://nguyenkhanhan1803:180311202@expressdevops.bnw1dgz.mongodb.net/express_devops?appName=expressDevops");
     console.log("Mongo Atlas connected!!!");
 });
 exports.connectDB = connectDB;

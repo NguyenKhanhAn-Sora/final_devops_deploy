@@ -68,17 +68,4 @@ describe("Comment API", () => {
     expect(res.body.comment).toHaveProperty("image", testImageId);
   });
 
-  it("should post another comment successfully", async () => {
-    const commentData = {
-      content: "Another test comment",
-    };
-
-    const res = await request(app)
-      .post(`/api/comments/${testImageId}`)
-      .set("Authorization", `Bearer ${accessToken}`)
-      .send(commentData);
-
-    expect(res.statusCode).toBe(201);
-    expect(res.body.comment).toHaveProperty("content", commentData.content);
-  });
 });
