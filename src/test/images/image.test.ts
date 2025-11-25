@@ -30,45 +30,14 @@ describe("Image API", () => {
 
     const image1 = new Image({
       user: user?._id,
-      imageUrl: "http://example.com/public1.jpg",
-      publicId: "public1",
-      description: "Public Image 1",
+      imageUrl: "https://res.cloudinary.com/dsjpjawiz/image/upload/v1764077281/myImages/acpao1ou9cqkzdvnqcpx.jpg",
+      publicId: "myImages/acpao1ou9cqkzdvnqcpx",
+      description: "This is my car of Khanh An",
       visibility: "public",
       status: "approved",
     });
-
-    const image2 = new Image({
-      user: user?._id,
-      imageUrl: "http://example.com/public2.jpg",
-      publicId: "public2",
-      description: "Public Image 2",
-      visibility: "public",
-      status: "approved",
-    });
-
-    const image3 = new Image({
-      user: user?._id,
-      imageUrl: "http://example.com/private.jpg",
-      publicId: "private1",
-      description: "Private Image",
-      visibility: "private",
-      status: "approved",
-    });
-
-    const image4 = new Image({
-      user: user?._id,
-      imageUrl: "http://example.com/pending.jpg",
-      publicId: "pending1",
-      description: "Pending Image",
-      visibility: "public",
-      status: "pending",
-    });
-
     await Promise.all([
-      image1.save(),
-      image2.save(),
-      image3.save(),
-      image4.save(),
+      image1.save()
     ]);
   });
 
@@ -80,9 +49,9 @@ describe("Image API", () => {
     const res = await request(app).get("/api/images/public");
 
     expect(res.statusCode).toBe(200);
-    expect(res.body).toHaveProperty("images");
+    expect(res.body).toHaveProperty("image");
     expect(Array.isArray(res.body.images)).toBe(true);
-    expect(res.body.images.length).toBe(2);
+    expect(res.body.images.length).toBe(1);
 
     res.body.images.forEach((img: any) => {
       expect(img.visibility).toBe("public");
